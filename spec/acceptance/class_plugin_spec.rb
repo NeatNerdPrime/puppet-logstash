@@ -36,7 +36,7 @@ describe 'class plugin' do
       remove('logstash-input-sqs')
     end
 
-    it 'will not remove it again' do
+    it 'does not remove it again' do
       log = ensure_plugin('absent', 'logstash-input-sqs').stdout
       expect(log).not_to contain('remove-logstash-input-sqs')
     end
@@ -48,11 +48,11 @@ describe 'class plugin' do
   end
 
   context 'when a plugin is installed' do
-    it 'will contain the required plugin' do
+    it 'contains the required plugin' do
       expect(installed_plugins).to contain('logstash-input-file')
     end
 
-    it 'will not install it again' do
+    it 'does not install it again' do
       log = ensure_plugin('present', 'logstash-input-file').stdout
       expect(log).not_to contain('install-logstash-input-file')
     end
